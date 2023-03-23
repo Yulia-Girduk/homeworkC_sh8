@@ -2,7 +2,6 @@
 // которая упорядочит по убыванию элементы 
 // каждой строки двумерного массива.
 
-// Выводим сообщения для пользователя и возвращаем введенные данные пользователем
 int Prompt(string message)
 {
     Console.Write(message);
@@ -24,8 +23,8 @@ void PrintArray(int[,] tableArray)
     }
 }
 
-// Генерируем (задаем) массив
-int[,] GenerateArray(int numberRows, int numberColumns)
+// Генерируем (задаем) массив 
+int[,] GenerateArray(int numberRows, int numberColumns, int numberStart, int numberEnd)
 {
     Random random = new Random();
     int[,] array = new int[numberRows, numberColumns];
@@ -33,7 +32,7 @@ int[,] GenerateArray(int numberRows, int numberColumns)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = random.Next(1, 10);
+            array[i, j] = random.Next(numberStart, numberEnd);
         }
     }
     return array;
@@ -62,8 +61,10 @@ int[,] OrganizeElementsDecrease(int[,] array)
 
 int numberRows = Prompt("Введите значение количества строк массива: ");
 int numberColumns = Prompt("Введите значение количества столбцов массива: ");
+int numberStart = Prompt("Введите начальное значение для заполнения массива: ");
+int numberEnd = Prompt("Введите конечное значение для заполнения массива: ");
 
-int[,] matrix = GenerateArray(numberRows, numberColumns);
+int[,] matrix = GenerateArray(numberRows, numberColumns, numberStart, numberEnd);
 PrintArray(matrix);
 
 matrix = OrganizeElementsDecrease(matrix);
