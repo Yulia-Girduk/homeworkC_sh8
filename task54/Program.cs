@@ -60,7 +60,6 @@ int[,] OrganizeElementsDecrease(int[,] array)
     return array;
 }
 
-
 int numberRows = Prompt("Введите значение количества строк массива: ");
 int numberColumns = Prompt("Введите значение количества столбцов массива: ");
 
