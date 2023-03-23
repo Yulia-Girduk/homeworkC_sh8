@@ -11,7 +11,7 @@ int Prompt(string message)
 }
 
 // Выводим массив на экран
-void PrintArray(int[,] tableArray)
+void PrintTableArray(int[,] tableArray)
 {
     Console.WriteLine();
     for (int i = 0; i < tableArray.GetLength(0); i++)
@@ -39,25 +39,16 @@ int[,] GenerateArray(int numberRows, int numberColumns, int numberStart, int num
     return array;
 }
 
-// Упорядочит элементы массива по убыванию
-int[,] OrganizeElementsDecrease(int[,] array)
+// Получаем дономерный массив суммы строк двумерного массива 
+// 
+int[] GetSumLinesArray(int[,] tableArray)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            for (int n = 0; n < array.GetLength(1) - 1; n++)
-            {
-                if (array[i, n] < array[i, n + 1])
-                {
-                    int temp = array[i, n];
-                    array[i, n] = array[i, n + 1];
-                    array[i, n + 1] = temp;
-                }
-            }
-        }
-    }
-    return array;
+    
+}
+
+(int,int) GetMinElement(int[] array)
+{
+
 }
 
 int numberRows = Prompt("Введите значение количества строк массива: ");
@@ -65,8 +56,14 @@ int numberColumns = Prompt("Введите значение количества
 int numberStart = Prompt("Введите начальное значение для заполнения массива: ");
 int numberEnd = Prompt("Введите конечное значение для заполнения массива: ");
 
-int[,] matrix = GenerateArray(numberRows, numberColumns);
-PrintArray(matrix);
+int[,] matrix = GenerateArray(numberRows, numberColumns, numberStart, numberStart);
 
-matrix = OrganizeElementsDecrease(matrix);
-PrintArray(matrix);
+Console.WriteLine("Заданный массив: ")
+PrintTableArray(matrix);
+
+int[] sumElementsLinesArray = GetSumLinesArray(matrix);
+
+
+(int minSum, int indexRow ) minSum = GetMinElement(sumElementsLinesArray);
+Console.WriteLine($"Наименьшая сумма элементов массива = {minSum} находится в строки {indexRow}");
+
