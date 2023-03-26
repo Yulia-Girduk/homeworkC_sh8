@@ -45,6 +45,10 @@ int[,] GenerateArray(int numberRows, int numberColumns)
             nextNumber++;
         }
         
+        if (nextNumber > array.GetLength(0) * array.GetLength(1))
+        {
+            break;
+        }
         j = numberColumns-1;
         for (i = roundNumbers+1; i < numberRows; i++)
         {
